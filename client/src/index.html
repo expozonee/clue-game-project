@@ -14,7 +14,7 @@
         <h3 id="rounds">round: 1</h3>
         <h3 id="numOfQuestionsInRound">number of question asked: 0</h3>
         <button id="hint-btn">Hint</button>
-        <p id="hint"></p>
+        <p id="hint">stuck? click the hint button to get hint</p>
       </section>
 
       <section id="container">
@@ -50,7 +50,7 @@
           <h2>Accusation</h2>
           <h3 id="numOfAccusations" count="0">Number of accusations:</h3>
 
-          <form action="" id="accusation-form">
+          <form onsubmit="handleAccusationSubmit(event)" id="accusation-form">
             <fieldset>
               <label for="accusation_people-options">Person</label>
               <select name="person" id="accusation_people-options"></select>
@@ -72,11 +72,14 @@
                 min="0"
                 max="23"
                 placeholder="Choose an hour"
+                required
               />
             </fieldset>
+            <button id="accusationBtn" type="submit">
+              Send the accusation
+            </button>
           </form>
-          <button id="accusationBtn">Send the accusation</button>
-          <h4 id="accusations-result">result:</h4>
+          <h4 id="accusations-result"></h4>
         </section>
       </section>
     </article>

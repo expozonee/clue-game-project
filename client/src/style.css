@@ -39,6 +39,12 @@ button {
   margin: 10px;
 }
 
+button:disabled {
+  background-color: #ccc;
+  color: #333;
+  cursor: not-allowed;
+}
+
 select {
   padding: 10px;
   border: none;

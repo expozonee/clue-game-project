@@ -66,9 +66,9 @@ app.post("/solve", (req, res) => {
   const { person, weapon, room, hour } = req.body;
   const murderDetails = fns.getLoadedData("murderDetails");
   if (
-    murderDetails.murderer.id === person &&
-    murderDetails.weapon.id === weapon &&
-    murderDetails.room.id === room &&
+    murderDetails.murderer.id === parseInt(person) &&
+    murderDetails.weapon.id === parseInt(weapon) &&
+    murderDetails.room.id === parseInt(room) &&
     murderDetails.time === hour
   ) {
     res.json({ msg: true });

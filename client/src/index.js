@@ -17,6 +17,7 @@ const personSelectElement = document.getElementById(
 const roomsSelectElement = document.getElementById("rooms_options");
 const weaponSelectElement = document.getElementById("weapon_options");
 const numberOfAccusationsElement = document.getElementById("numOfAccusations");
+const accusationResultElement = document.getElementById("accusations-result");
 
 // general
 let rounds = 1;
@@ -36,9 +37,7 @@ function initGameData() {
 
 initGameData();
 
-questionSubmitBtn.addEventListener("click", () => {
-  //   const person = document.getElementById;
-});
+hintBtn.addEventListener("click", getHint);
 
 function handleQuestionSubmit(e) {
   e.preventDefault();
@@ -203,7 +202,79 @@ function getWeapons() {
       const option = document.createElement("option");
       option.value = weapon.name;
       option.innerText = weapon.name;
+      option.setAttribute("weaponId", weapon.id);
       weaponSelectElement.appendChild(option);
+    });
+  });
+}
+
+function handleAccusationSubmit(e) {
+  e.preventDefault();
+
+  const formData = new FormData(accusationsForm);
+
+  //   get the data from that was entered from the form
+  const formValues = Object.fromEntries(formData.entries());
+
+  const hour = `${formValues.accusation_hour}:00`;
+  const personId =
+    personSelectElement.options[personSelectElement.selectedIndex].getAttribute(
+      "personId"
+    );
+  const weaponId =
+    weaponSelectElement.options[weaponSelectElement.selectedIndex].getAttribute(
+      "weaponId"
+    );
+  const roomId = formValues.room;
+
+  fetch(`${BASE_URL}/solve`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      person: personId,
+      weapon: weaponId,
+      room: roomId,
+      hour,
+    }),
+  }).then((res) => {
+    res.json().then((accustationResult) => {
+      const isFound = accustationResult.msg;
+      if (isFound) {
+        finishGame(isFound);
+      } else {
+        if (numberOfAccusations < 3) {
+          numberOfAccusations++;
+          numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
+          finishGame(isFound);
+        } else {
+          numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
+
+          finishGame(isFound);
+        }
+      }
+    });
+  });
+}
+
+function finishGame(isFound) {
+  if (isFound) {
+    accusationResultElement.innerText = `Result: You have found the murderer!`;
+    accusationResultElement.classList.add("found");
+  } else if (numberOfAccusations === 3) {
+    accusationResultElement.innerText = `Result: This is not the murderer try again! Game Over!`;
+    accusationSubmitBtn.setAttribute("disabled", true);
+    questionSubmitBtn.setAttribute("disabled", true);
+  } else {
+    accusationResultElement.innerText = `Result: This is not the murderer try again!`;
+  }
+}
+
+function getHint() {
+  fetch(`${BASE_URL}/hint`).then((res) => {
+    res.json().then((hint) => {
+      hintP.innerText = hint.hint;
     });
   });
 }
