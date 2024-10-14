@@ -19,6 +19,13 @@ body {
 fieldset {
   border: none;
   width: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+fieldset > label {
+  flex-basis: 100px;
 }
 
 button {
@@ -38,6 +45,7 @@ select {
   border-radius: 5px;
   margin: 10px;
   min-width: 100px;
+  border: 0.5px solid black;
 }
 
 input {
@@ -46,6 +54,8 @@ input {
   border-radius: 5px;
   margin: 10px;
   min-width: 100px;
+  flex-grow: 1;
+  border: 0.5px solid black;
 }
 
 #game {

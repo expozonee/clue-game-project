@@ -6,10 +6,32 @@ const questionForm = document.getElementById("questionForm");
 const roomInfoContainer = document.getElementById("room-info");
 const hintBtn = document.getElementById("hint-btn");
 const hintP = document.getElementById("hint");
+const roundCountElement = document.getElementById("rounds");
 const questionAskedInRound = document.getElementById("numOfQuestionsInRound");
 
+//  accusations elements
+const accusationsForm = document.getElementById("accusation-form");
+const personSelectElement = document.getElementById(
+  "accusation_people-options"
+);
+const roomsSelectElement = document.getElementById("rooms_options");
+const weaponSelectElement = document.getElementById("weapon_options");
+const numberOfAccusationsElement = document.getElementById("numOfAccusations");
+
+// general
+let rounds = 1;
+let numOfQuestionsInRound = 0;
+let numberOfAccusations = 0;
+const maxNumberOfAccusations = 3;
+
 function initGameData() {
+  roundCountElement.innerText = "Round: 1";
+  questionAskedInRound.innerText = "Number of question asked: 0";
+  numberOfAccusationsElement.innerText = "Number of accusations: 0";
+
   getPeople();
+  getRooms();
+  getWeapons();
 }
 
 initGameData();
@@ -20,6 +42,7 @@ questionSubmitBtn.addEventListener("click", () => {
 
 function handleQuestionSubmit(e) {
   e.preventDefault();
+  handleCount();
   let isTogether;
   const formData = new FormData(questionForm);
 
@@ -129,15 +152,58 @@ function getPeople() {
   });
 
   peopleData.then((people) => {
-    console.log(people);
     people.forEach((person) => {
       const option = document.createElement("option");
       option.value = person.name;
       option.setAttribute("personId", person.id);
-
       option.innerText = person.name;
-
+      const personOption = option.cloneNode(true);
       peopleSelectElement.appendChild(option);
+      personSelectElement.appendChild(personOption);
+    });
+  });
+}
+
+function handleCount() {
+  if (numOfQuestionsInRound < 5) {
+    numOfQuestionsInRound++;
+  } else {
+    numOfQuestionsInRound = 0;
+    rounds++;
+  }
+
+  roundCountElement.innerText = `Round: ${rounds}`;
+  questionAskedInRound.innerText = `Number of question asked: ${numOfQuestionsInRound}`;
+}
+
+function getRooms() {
+  const roomsRes = fetch(`${BASE_URL}/rooms`);
+  const roomsData = roomsRes.then((res) => {
+    return res.json();
+  });
+
+  roomsData.then((rooms) => {
+    rooms.forEach((room) => {
+      const option = document.createElement("option");
+      option.value = room.id;
+      option.innerText = room.room_name;
+      roomsSelectElement.appendChild(option);
+    });
+  });
+}
+
+function getWeapons() {
+  const weaponsRes = fetch(`${BASE_URL}/weapons`);
+  const weaponsData = weaponsRes.then((res) => {
+    return res.json();
+  });
+
+  weaponsData.then((weapons) => {
+    weapons.forEach((weapon) => {
+      const option = document.createElement("option");
+      option.value = weapon.name;
+      option.innerText = weapon.name;
+      weaponSelectElement.appendChild(option);
     });
   });
 }
