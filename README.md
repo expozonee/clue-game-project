@@ -1,1 +1,1 @@
-# clue-game-project
+# clue-game

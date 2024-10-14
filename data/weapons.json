@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Rubber Chicken of Doom",
+        "material": "Rubber",
+        "description": "This weapon causes spontaneous laughter, which can be dangerous if used near cliffs."
+    },
+    {
+        "id": 2,
+        "name": "Feathered Sword of Tickling",
+        "material": "Goose Feathers",
+        "description": "One swipe and your enemies will be reduced to giggling puddles of helplessness."
+    },
+    {
+        "id": 3,
+        "name": "Banana Peel Slingshot",
+        "material": "Flexible Wood and Banana Peels",
+        "description": "It’s more annoying than deadly, but slipping on it is inevitable."
+    },
+    {
+        "id": 4,
+        "name": "The Spork of Eternal Confusion",
+        "material": "Titanium Spork",
+        "description": "Fork? Spoon? Both? No one knows, and that’s where the confusion begins."
+    },
+    {
+        "id": 5,
+        "name": "Accordion of Annihilation",
+        "material": "Squeaky Metal",
+        "description": "Its awful sound is said to have caused entire armies to flee without a fight."
+    },
+    {
+        "id": 6,
+        "name": "The Pillow of Smothering Softness",
+        "material": "Memory Foam",
+        "description": "So soft, it’ll put anyone into a deep sleep, but they might wake up 10 years later."
+    },
+    {
+        "id": 7,
+        "name": "Cactus Club",
+        "material": "Wood and Cactus Spikes",
+        "description": "It’s sharp and painful, but it also waters itself."
+    },
+    {
+        "id": 8,
+        "name": "The Sock Cannon",
+        "material": "Cotton Socks",
+        "description": "Fires socks at enemies, leaving them confused and slightly annoyed by mismatched pairs."
+    },
+    {
+        "id": 9,
+        "name": "Exploding Whoopee Cushion",
+        "material": "Rubber and Prank Powder",
+        "description": "You laugh at first, then it explodes, and suddenly it’s not so funny anymore."
+    },
+    {
+        "id": 10,
+        "name": "The Hairdryer of Infinite Wind",
+        "material": "Plastic and Mystery Gears",
+        "description": "It blows so hard, it can knock down trees or just give you the best hair day ever."
+    }
+]

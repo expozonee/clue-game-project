@@ -1,0 +1,88 @@
+[
+    {
+      "id": 1,
+      "name": "Sally 'Socks' Spaghetti",
+      "occupation": "Pasta Sculptor",
+      "backstory": "Known for making pasta art no one asked for. She hated Chester because he kept suggesting she use cheese instead of sauce in her pasta sculptures."
+    },
+    {
+      "id": 2,
+      "name": "Bob 'The Blob' Blobson",
+      "occupation": "Professional Sleeper",
+      "backstory": "Can sleep anywhere, including during important meetings. Bob disliked Chester because Chester's fondue pot would always gurgle loudly while Bob was trying to nap."
+    },
+    {
+      "id": 3,
+      "name": "Tiny Tim 'Big Voice' Thompson",
+      "occupation": "Opera Singer",
+      "backstory": "Has the loudest voice in town, even when ordering coffee. He couldn’t stand Chester because Chester tried to make cheese the theme of one of Tim’s concerts, suggesting he sing only songs about dairy."
+    },
+    {
+      "id": 4,
+      "name": "Lana 'Laser Eyes' Loo",
+      "occupation": "Laser Tag Champion",
+      "backstory": "Takes laser tag way too seriously. Lana was annoyed by Chester because he kept bringing cheese platters to laser tag matches, leaving greasy fingerprints on all the gear."
+    },
+    {
+      "id": 5,
+      "name": "Gordon 'Goose' Gossamer",
+      "occupation": "Goose Whisperer",
+      "backstory": "Claims to understand what geese are really thinking. Gordon despised Chester because Chester insisted that geese would love to snack on gourmet cheese, which Gordon found offensive to his understanding of geese's true nature."
+    },
+    {
+      "id": 6,
+      "name": "Tina 'Tornado' Tinkles",
+      "occupation": "Professional Wind Chime Maker",
+      "backstory": "Her wind chimes are so loud they caused a neighborhood dispute. Tina didn’t like Chester because he once replaced her wind chimes with wheels of gouda, claiming they made a 'soothing sound.'"
+    },
+    {
+      "id": 7,
+      "name": "Fredrick 'Funky' Fluffernutter",
+      "occupation": "Inventor of Useless Gadgets",
+      "backstory": "Once invented a 'sock warmer' that caught on fire. Fredrick was irritated with Chester because Chester suggested his next invention be a cheese grater powered by wind, which Frederick found ridiculous."
+    },
+    {
+      "id": 8,
+      "name": "Sam 'Snazzy' Sneakers",
+      "occupation": "Fashion Consultant",
+      "backstory": "Has a strong opinion about everyone else's fashion choices. Sam couldn’t stand Chester because Chester once insisted on wearing a tuxedo made entirely of cheese to one of Sam’s fashion shows."
+    },
+    {
+      "id": 9,
+      "name": "Victoria 'Velvet' Vine",
+      "occupation": "Plant Therapist",
+      "backstory": "Talks to plants more than to people. She disliked Chester because he once suggested using cheese as a fertilizer, which nearly killed her prized fern."
+    },
+    {
+      "id": 10,
+      "name": "Milo 'Mushroom' McMurphy",
+      "occupation": "Mushroom Enthusiast",
+      "backstory": "Obsessed with mushrooms; wears mushroom-themed clothing. Milo thought Chester was obnoxious because Chester once tried to pair every mushroom dish with a different type of cheese, ruining the flavor, according to Milo."
+    },
+    {
+      "id": 11,
+      "name": "Vincent 'Waffles' Waldo",
+      "occupation": "Breakfast Food Critic",
+      "backstory": "He only reviews waffles and nothing else. Vincent hated Chester because Chester once suggested waffles should always be served with melted cheese, ruining his waffle-tasting event."
+    },
+    {
+      "id": 12,
+      "name": "Chester 'Cheddar' Cheswick (Victim)",
+      "occupation": "Cheese Enthusiast",
+      "backstory": "Chester was so obsessed with cheese that it annoyed everyone around him.",
+      "reasons_for_dislike": {
+        "Sally 'Socks' Spaghetti": "He kept insisting she use cheese in her pasta sculptures.",
+        "Bob 'The Blob' Blobson": "Chester's fondue pot made too much noise while he was trying to nap.",
+        "Tiny Tim 'Big Voice' Thompson": "Chester wanted him to sing only songs about dairy.",
+        "Lana 'Laser Eyes' Loo": "Chester brought cheese platters to laser tag matches, leaving greasy fingerprints.",
+        "Gordon 'Goose' Gossamer": "He believed geese should snack on gourmet cheese.",
+        "Tina 'Tornado' Tinkles": "Chester replaced her wind chimes with wheels of gouda.",
+        "Fredrick 'Funky' Fluffernutter": "Chester suggested a cheese-powered gadget, which was ridiculous.",
+        "Sam 'Snazzy' Sneakers": "Chester wore a tuxedo made entirely of cheese to a fashion show.",
+        "Victoria 'Velvet' Vine": "Chester suggested cheese as fertilizer, nearly killing her fern.",
+        "Milo 'Mushroom' McMurphy": "Chester's cheese pairings ruined the taste of his mushrooms.",
+        "Vincent 'Waffles' Waldo": "He suggested cheese-covered waffles, ruining Vincent's tasting event."
+      }
+    }
+  ]
+  

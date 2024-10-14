@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Clue Game</title>
+  </head>
+  <body>
+    <article id="game">
+      <h1>Clue Game</h1>
+      <section id="info">
+        <h3 id="rounds">rounds</h3>
+        <h3 id="numOfQuestionsInRound">0</h3>
+        <button id="hint">Hint</button>
+      </section>
+
+      <section id="container">
+        <section id="questions">
+          <h2>Questions</h2>
+          <form action="" id="questionForm">
+            <fieldset>
+              <label for="questions_people-options">People</label>
+              <select name="people" id="questions_people-options"></select>
+            </fieldset>
+            <fieldset>
+              <label for="question_hour">Hour</label>
+              <input type="number" name="question_hour" id="question_hour" />
+            </fieldset>
+            <button type="submit">Get question result</button>
+          </form>
+          <h4 id="question-result">question result:</h4>
+        </section>
+
+        <section id="accusations">
+          <h2>Accusation</h2>
+          <h3 id="numOfAccusations" count="0">Number of accusations:</h3>
+
+          <form action="" id="accusation-form">
+            <fieldset>
+              <label for="accusation_people-options">Person</label>
+              <select name="person" id="accusation_people-options"></select>
+            </fieldset>
+            <fieldset>
+              <label for="room">Room</label>
+              <select name="room" id="room_options"></select>
+            </fieldset>
+            <fieldset>
+              <label for="weapon">weapon</label>
+              <select name="weapon" id="weapon_options"></select>
+            </fieldset>
+            <fieldset>
+              <label for="accusation_hour">Hour</label>
+              <input
+                type="number"
+                name="accusation_hour"
+                id="accusation_hour"
+              />
+            </fieldset>
+            <button type="submit">Send the accusation</button>
+            <h4 id="accusations-result">result:</h4>
+          </form>
+        </section>
+      </section>
+    </article>
+  </body>
+</html>

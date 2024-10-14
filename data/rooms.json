@@ -1,0 +1,69 @@
+[
+    {
+        "id": 1,
+        "room_name": "The Infinite Hallway",
+        "size_sqm": 300,
+        "general_items": [
+            "Giant cheese wheel",
+            "Fondue pot",
+            "Cheese grater",
+            "Pasta strainer",
+            "Melted cheese sculpture"
+          ],
+        "description": "A hallway that looks never-ending until you realize it’s just mirrors and bad lighting."
+        
+    },
+    {
+        "id": 2,
+        "room_name": "The Suspicious Closet",
+        "size_sqm": 5,
+        "description": "A closet that occasionally makes coughing noises, even though no one is inside.",
+        "general_items": [
+            "Waffle iron",
+            "Syrup dispenser",
+            "Fluffy pillow for tastings",
+            "Randomly misplaced spatula",
+            "Waffle recipe book"
+          ]
+    },
+    {
+        "id": 3,
+        "room_name": "The Upside-Down Library",
+        "size_sqm": 50,
+        "description": "All the books are glued to the ceiling, and the floor is mysteriously sticky.",
+        "general_items": [
+            "Mushroom encyclopedia",
+            "Mushroom-themed artwork",
+            "Dried mushrooms display",
+            "Spore printing kit",
+            "Mushroom-shaped lamps"
+          ]
+
+    },
+    {
+        "id": 4,
+        "room_name": "The Invisible Room",
+        "size_sqm": 70,
+        "description": "You can't see anything, but you can feel everything...especially the walls.",
+        "general_items": [
+            "Watering can",
+            "Fertilizer bags",
+            "Plant pots of various sizes",
+            "Mister spray bottle",
+            "Gardening gloves"
+          ]
+    },
+    {
+        "id": 5,
+        "room_name": "The Square Room That’s Actually A Circle",
+        "size_sqm": 80,
+        "description": "It looks square, but for some reason, everyone keeps walking in circles.",
+        "general_items": [
+            "Pasta maker",
+            "Variety of pasta shapes",
+            "Rolling pin",
+            "Italian cookbooks",
+            "Spaghetti measuring tool"
+          ]
+    }
+]
