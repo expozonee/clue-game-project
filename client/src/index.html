@@ -11,26 +11,39 @@
     <article id="game">
       <h1>Clue Game</h1>
       <section id="info">
-        <h3 id="rounds">rounds</h3>
-        <h3 id="numOfQuestionsInRound">0</h3>
-        <button id="hint">Hint</button>
+        <h3 id="rounds">round: 1</h3>
+        <h3 id="numOfQuestionsInRound">number of question asked: 0</h3>
+        <button id="hint-btn">Hint</button>
+        <p id="hint"></p>
       </section>
 
       <section id="container">
         <section id="questions">
           <h2>Questions</h2>
-          <form action="" id="questionForm">
+          <form onsubmit="handleQuestionSubmit(event)" id="questionForm">
             <fieldset>
               <label for="questions_people-options">People</label>
-              <select name="people" id="questions_people-options"></select>
+              <select
+                name="people"
+                id="questions_people-options"
+                required
+              ></select>
             </fieldset>
             <fieldset>
               <label for="question_hour">Hour</label>
-              <input type="number" name="question_hour" id="question_hour" />
+              <input
+                type="number"
+                name="question_hour"
+                id="question_hour"
+                min="0"
+                max="23"
+                required
+                placeholder="Choose an hour"
+              />
             </fieldset>
-            <button type="submit">Get question result</button>
+            <button id="questionBtn" type="submit">Get question result</button>
           </form>
-          <h4 id="question-result">question result:</h4>
+          <div id="room-info"></div>
         </section>
 
         <section id="accusations">
@@ -56,11 +69,13 @@
                 type="number"
                 name="accusation_hour"
                 id="accusation_hour"
+                min="0"
+                max="23"
               />
             </fieldset>
-            <button type="submit">Send the accusation</button>
-            <h4 id="accusations-result">result:</h4>
           </form>
+          <button id="accusationBtn">Send the accusation</button>
+          <h4 id="accusations-result">result:</h4>
         </section>
       </section>
     </article>

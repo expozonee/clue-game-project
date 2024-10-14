@@ -79,3 +79,40 @@ section:not(#container) {
   align-items: center;
   justify-content: center;
 }
+
+#room-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 300px;
+}
+
+.room-items {
+  text-indent: 2rem;
+  list-style: none;
+}
+
+.room-items > * {
+  position: relative;
+}
+
+.room-items > *::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  width: 8px;
+  aspect-ratio: 1/1;
+  background-color: black;
+}
+
+.isTogether {
+  color: red;
+  font-weight: bold;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+}

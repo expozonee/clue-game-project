@@ -30,8 +30,9 @@ app.get("/rooms", (req, res) => {
 });
 app.get("/room/:roomId", (req, res) => {
   const rooms = fns.getLoadedData("rooms");
+
   for (const room of rooms) {
-    if (room.id === req.roomId) {
+    if (room.id == req.params.roomId) {
       res.json({ room });
       return;
     }
