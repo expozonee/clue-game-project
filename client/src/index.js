@@ -37,7 +37,10 @@ function initGameData() {
 
 initGameData();
 
-hintBtn.addEventListener("click", getHint);
+hintBtn.addEventListener("click", () => {
+  getHint();
+  hintBtn.setAttribute("disabled", true);
+});
 
 function handleQuestionSubmit(e) {
   e.preventDefault();
@@ -262,10 +265,12 @@ function finishGame(isFound) {
   if (isFound) {
     accusationResultElement.innerHTML = `<p>Result: <strong>You have found the murderer!</strong></p>`;
     accusationResultElement.classList.add("found");
+    accusationSubmitBtn.setAttribute("disabled", true);
+    questionSubmitBtn.setAttribute("disabled", true);
   } else if (numberOfAccusations === 3) {
     accusationResultElement.innerHTML = `
     <p>Result: <strong>This is not the murderer try again!</strong></p>
-    <h4>Game Over!</h4>
+    <h4 class="game-over">Game Over!</h4>
     `;
     accusationSubmitBtn.setAttribute("disabled", true);
     questionSubmitBtn.setAttribute("disabled", true);
