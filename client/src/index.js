@@ -377,13 +377,13 @@ function finishGame(isFound) {
 
   detailsRes.then((details) => {
     if (isFound) {
-      accusationResultElement.innerHTML = `<p>Result: <strong>You have found the murderer!</strong></p>`;
+      accusationResultElement.innerHTML = `<p><strong>You have found the murderer!</strong></p>`;
       accusationResultElement.classList.add("found");
       accusationSubmitBtn.setAttribute("disabled", true);
       questionSubmitBtn.setAttribute("disabled", true);
     } else if (numberOfAccusations === 3) {
       accusationResultElement.innerHTML = `
-      <p>Result: <strong>This is not the murderer try again!</strong></p>
+      <p><strong>This is not the murderer try again!</strong></p>
       <h4 class="game-over">Game Over!</h4>
       <section class="details-container">
       <h5 class="murder-details">Murder details:</h5>
@@ -396,7 +396,7 @@ function finishGame(isFound) {
       accusationSubmitBtn.setAttribute("disabled", true);
       questionSubmitBtn.setAttribute("disabled", true);
     } else {
-      accusationResultElement.innerHTML = `<p>Result: <strong>This is not the murderer try again!<strong></p>`;
+      accusationResultElement.innerHTML = `<p><strong>This is not the murderer try again!<strong></p>`;
     }
   });
 }
