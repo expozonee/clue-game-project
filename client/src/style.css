@@ -120,6 +120,14 @@ section:not(#container) {
   justify-content: center;
 }
 
+#accusations-result {
+  width: 100%;
+}
+
+#accusations-result :first-child:not(h5) {
+  text-align: center;
+}
+
 #container {
   display: flex;
   gap: 20px;
@@ -193,6 +201,23 @@ section:not(#container) {
   padding-block: 0.5rem;
   width: 100%;
   text-align: center;
+}
+
+.details-container {
+  border: 1px solid #fff;
+  width: 100%;
+}
+
+.details-container > *:not(:first-child) {
+  text-align: start;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.murder-details {
+  font-size: 2.5rem;
+  text-align: start;
+  width: 80%;
 }
 
 @media (max-width: 750px) {

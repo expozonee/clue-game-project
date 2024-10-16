@@ -358,39 +358,47 @@ function handleAccusationSubmit(e) {
   }).then((res) => {
     res.json().then((accustationResult) => {
       const isFound = accustationResult.msg;
-      if (isFound) {
-        finishGame(isFound);
+      if (numberOfAccusations < 3) {
+        numberOfAccusations++;
+        numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
       } else {
-        if (numberOfAccusations < 3) {
-          numberOfAccusations++;
-          numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
-          finishGame(isFound);
-        } else {
-          numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
-
-          finishGame(isFound);
-        }
+        numberOfAccusationsElement.innerText = `Number of accusations: ${numberOfAccusations}`;
       }
+
+      finishGame(isFound);
     });
   });
 }
 
 function finishGame(isFound) {
-  if (isFound) {
-    accusationResultElement.innerHTML = `<p>Result: <strong>You have found the murderer!</strong></p>`;
-    accusationResultElement.classList.add("found");
-    accusationSubmitBtn.setAttribute("disabled", true);
-    questionSubmitBtn.setAttribute("disabled", true);
-  } else if (numberOfAccusations === 3) {
-    accusationResultElement.innerHTML = `
-    <p>Result: <strong>This is not the murderer try again!</strong></p>
-    <h4 class="game-over">Game Over!</h4>
-    `;
-    accusationSubmitBtn.setAttribute("disabled", true);
-    questionSubmitBtn.setAttribute("disabled", true);
-  } else {
-    accusationResultElement.innerHTML = `<p>Result: <strong>This is not the murderer try again!<strong></p>`;
-  }
+  const detailsRes = fetch(`${BASE_URL}/details`).then((res) => {
+    return res.json();
+  });
+
+  detailsRes.then((details) => {
+    if (isFound) {
+      accusationResultElement.innerHTML = `<p>Result: <strong>You have found the murderer!</strong></p>`;
+      accusationResultElement.classList.add("found");
+      accusationSubmitBtn.setAttribute("disabled", true);
+      questionSubmitBtn.setAttribute("disabled", true);
+    } else if (numberOfAccusations === 3) {
+      accusationResultElement.innerHTML = `
+      <p>Result: <strong>This is not the murderer try again!</strong></p>
+      <h4 class="game-over">Game Over!</h4>
+      <section class="details-container">
+      <h5 class="murder-details">Murder details:</h5>
+      <p class"details"><strong>Murderer:</strong> ${details.murderer.name}</p>
+      <p class"details"><strong>Room:</strong> ${details.room.room_name}</p>
+      <p class"details"><strong>Weapon:</strong> ${details.weapon.name}</p>
+      <p class"details"><strong>Time of crime:</strong> ${details.time}</p>
+      </section>
+      `;
+      accusationSubmitBtn.setAttribute("disabled", true);
+      questionSubmitBtn.setAttribute("disabled", true);
+    } else {
+      accusationResultElement.innerHTML = `<p>Result: <strong>This is not the murderer try again!<strong></p>`;
+    }
+  });
 }
 
 function getHint() {
