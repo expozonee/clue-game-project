@@ -29,6 +29,14 @@ let numberOfAccusations = 0;
 const maxNumberOfAccusations = 3;
 const allSelectItems = document.querySelectorAll("select");
 
+document.addEventListener("DOMContentLoaded", () => {
+  const playAudio = () => {
+    document.getElementById("horror-audio").play();
+    document.removeEventListener("click", playAudio);
+  };
+  document.addEventListener("click", playAudio);
+});
+
 function initGameData() {
   roundCountElement.innerText = "Round: 1";
   questionAskedInRound.innerText = "Number of question asked: 0";
@@ -124,7 +132,6 @@ function handleQuestionSubmit(e) {
   roomIdPromise.then((data) => {
     data.json().then((roomId) => {
       const room_id = roomId.msg;
-      console.log(room_id);
 
       // get the room which the victim was in
 
@@ -156,7 +163,6 @@ function handleQuestionSubmit(e) {
       const itemsAtThatRoomPromise = fetch(`${BASE_URL}/room/${room_id}`);
       itemsAtThatRoomPromise.then((data) => {
         data.json().then((roomData) => {
-          console.log(roomData);
           roomInfoContainer.innerHTML = `
             
             <h3 id="room-details">Room Details</h3>

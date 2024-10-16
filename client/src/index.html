@@ -9,6 +9,11 @@
   </head>
   <body>
     <article id="game">
+      <audio
+        id="horror-audio"
+        src="../public/horror-mirror-room-249033.mp3"
+        loop
+      ></audio>
       <h1>Clue Game</h1>
       <section id="info">
         <h3 id="rounds">round: 1</h3>
@@ -32,15 +37,6 @@
             <fieldset>
               <label for="question_hour">Hour</label>
               <select name="question_hour" id="question_hour" required></select>
-              <!-- <input
-                type="number"
-                name="question_hour"
-                id="question_hour"
-                min="0"
-                max="23"
-                required
-                placeholder="Choose an hour"
-              /> -->
             </fieldset>
             <button id="questionBtn" type="submit">Get question result</button>
           </form>
@@ -71,16 +67,6 @@
                 id="accusation_hour"
                 required
               ></select>
-
-              <!-- <input
-                type="number"
-                name="accusation_hour"
-                id="accusation_hour"
-                min="0"
-                max="23"
-                placeholder="Choose an hour"
-                required
-              /> -->
             </fieldset>
             <button id="accusationBtn" type="submit">
               Send the accusation
