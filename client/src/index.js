@@ -8,12 +8,15 @@ const hintBtn = document.getElementById("hint-btn");
 const hintP = document.getElementById("hint");
 const roundCountElement = document.getElementById("rounds");
 const questionAskedInRound = document.getElementById("numOfQuestionsInRound");
+const questionHoursSelectElement = document.getElementById("question_hour");
 
 //  accusations elements
 const accusationsForm = document.getElementById("accusation-form");
 const personSelectElement = document.getElementById(
   "accusation_people-options"
 );
+const accusationHoursSelectElement = document.getElementById("accusation_hour");
+
 const roomsSelectElement = document.getElementById("rooms_options");
 const weaponSelectElement = document.getElementById("weapon_options");
 const numberOfAccusationsElement = document.getElementById("numOfAccusations");
@@ -24,6 +27,7 @@ let rounds = 1;
 let numOfQuestionsInRound = 0;
 let numberOfAccusations = 0;
 const maxNumberOfAccusations = 3;
+const allSelectItems = document.querySelectorAll("select");
 
 function initGameData() {
   roundCountElement.innerText = "Round: 1";
@@ -33,24 +37,73 @@ function initGameData() {
   getPeople();
   getRooms();
   getWeapons();
+  getHours();
 }
 
 initGameData();
+
+function createDisabledOption(type) {
+  const disabledOption = document.createElement("option");
+  disabledOption.value = "none";
+  disabledOption.innerText = `-- Select a ${type} --`;
+  disabledOption.setAttribute("disabled", true);
+  disabledOption.setAttribute("selected", true);
+  return disabledOption;
+}
+
+function createErrorMsgElement() {
+  const errorH5 = document.createElement("h5");
+  errorH5.classList.add("error");
+  errorH5.textContent = "One or more of the fields is missing!";
+  return errorH5;
+}
 
 hintBtn.addEventListener("click", () => {
   getHint();
   hintBtn.setAttribute("disabled", true);
 });
 
+allSelectItems.forEach((selectElement) => {
+  selectElement.addEventListener("change", () => {
+    if (selectElement.classList.contains("missing-field")) {
+      selectElement.classList.remove("missing-field");
+    }
+  });
+});
+
 function handleQuestionSubmit(e) {
   e.preventDefault();
-  handleCount();
   let isTogether;
   const formData = new FormData(questionForm);
 
   //   get the data from that was entered from the form
   const formValues = Object.fromEntries(formData.entries());
   const hour = formValues.question_hour;
+  const questionsContainer = document.getElementById("questions");
+  const existingError = questionsContainer.querySelector(".error");
+
+  if (peopleSelectElement.selectedIndex === 0) {
+    peopleSelectElement.classList.add("missing-field");
+  }
+  if (!hour) {
+    questionHoursSelectElement.classList.add("missing-field");
+  }
+
+  if (!hour || peopleSelectElement.selectedIndex === 0) {
+    const errorH5 = createErrorMsgElement();
+
+    if (existingError) {
+      questionsContainer.removeChild(existingError);
+    }
+    questionsContainer.appendChild(errorH5);
+    return;
+  }
+
+  if (existingError) {
+    questionsContainer.removeChild(existingError);
+  }
+
+  handleCount();
 
   //   get the person id that was chosen from the list in the form
   const personId =
@@ -154,6 +207,11 @@ function getPeople() {
   });
 
   peopleData.then((people) => {
+    const disabledOption = createDisabledOption("person");
+    const personDisabledOption = disabledOption.cloneNode(true);
+    peopleSelectElement.appendChild(disabledOption);
+    personSelectElement.appendChild(personDisabledOption);
+
     people.forEach((person) => {
       const option = document.createElement("option");
       option.value = person.name;
@@ -185,6 +243,9 @@ function getRooms() {
   });
 
   roomsData.then((rooms) => {
+    const disabledOption = createDisabledOption("room");
+    roomsSelectElement.appendChild(disabledOption);
+
     rooms.forEach((room) => {
       const option = document.createElement("option");
       option.value = room.id;
@@ -201,6 +262,9 @@ function getWeapons() {
   });
 
   weaponsData.then((weapons) => {
+    const disabledOption = createDisabledOption("weapon");
+    weaponSelectElement.appendChild(disabledOption);
+
     weapons.forEach((weapon) => {
       const option = document.createElement("option");
       option.value = weapon.name;
@@ -211,8 +275,26 @@ function getWeapons() {
   });
 }
 
+function getHours() {
+  const disabledOption = createDisabledOption("hour");
+  const accusationDisabledOption = disabledOption.cloneNode(true);
+  questionHoursSelectElement.appendChild(disabledOption);
+  accusationHoursSelectElement.appendChild(accusationDisabledOption);
+
+  for (let i = 0; i < 24; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.innerText = i;
+    const accusationHourOption = option.cloneNode(true);
+    questionHoursSelectElement.appendChild(option);
+    accusationHoursSelectElement.appendChild(accusationHourOption);
+  }
+}
+
 function handleAccusationSubmit(e) {
   e.preventDefault();
+  const accusationContainer = document.getElementById("accusations");
+  const existingError = accusationContainer.querySelector(".error");
 
   const formData = new FormData(accusationsForm);
 
@@ -229,6 +311,32 @@ function handleAccusationSubmit(e) {
       "weaponId"
     );
   const roomId = formValues.room;
+
+  if (!formValues.accusation_hour) {
+    accusationHoursSelectElement.classList.add("missing-field");
+  }
+  if (!personId) {
+    personSelectElement.classList.add("missing-field");
+  }
+  if (!weaponId) {
+    weaponSelectElement.classList.add("missing-field");
+  }
+  if (!roomId) {
+    roomsSelectElement.classList.add("missing-field");
+  }
+
+  if (!formValues.accusation_hour || !personId || !weaponId || !roomId) {
+    const errorH5 = createErrorMsgElement();
+    if (existingError) {
+      accusationContainer.removeChild(existingError);
+    }
+    accusationContainer.appendChild(errorH5);
+    return;
+  }
+
+  if (existingError) {
+    accusationContainer.removeChild(existingError);
+  }
 
   fetch(`${BASE_URL}/solve`, {
     method: "POST",

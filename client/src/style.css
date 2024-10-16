@@ -180,3 +180,7 @@ section:not(#container) {
   color: #a30e0e;
   font-size: 3rem;
 }
+
+.missing-field {
+  border: 2px solid red;
+}
