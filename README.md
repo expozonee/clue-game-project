@@ -50,6 +50,6 @@ Once you start:
 To start your sleuthing adventure, clone or fork the repository and run the following commands in your terminal:
 
 ```bash
-cd <repo-directory>
+cd clue-game-project
 npm install
-npm start
+npm run start
